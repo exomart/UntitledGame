@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=2]
+[gd_scene load_steps=47 format=2]
 
 [ext_resource path="res://src/Actors/Slime.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/Actors/LirikYaki.tscn" type="PackedScene" id=2]
@@ -21,11 +21,12 @@
 [ext_resource path="res://src/Levels/House.gd" type="Script" id=19]
 [ext_resource path="res://src/Helpers/Camera/CustomDelimiter2D.tscn" type="PackedScene" id=20]
 [ext_resource path="res://assets/GUI/profile.png" type="Texture" id=21]
-[ext_resource path="res://src/Helpers/ShowPromptInArea.gd" type="Script" id=22]
+[ext_resource path="res://src/Helpers/Utilities/ShowPromptInArea.gd" type="Script" id=22]
 [ext_resource path="res://src/Helpers/GUI/HealthBar.tscn" type="PackedScene" id=23]
 [ext_resource path="res://assets/GUI/cash.png" type="Texture" id=24]
 [ext_resource path="res://assets/actions/tile_0395.png" type="Texture" id=25]
 [ext_resource path="res://src/Helpers/Camera/CustomDelimiter2D.gd" type="Script" id=26]
+[ext_resource path="res://src/Helpers/Utilities/TeleportNode2D.tscn" type="PackedScene" id=27]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 51.2464, 8.42657 )
@@ -236,7 +237,6 @@ position = Vector2( -0.196415, -2.48631 )
 shape = SubResource( 3 )
 
 [node name="F_Prompt" type="Sprite" parent="LevelBackground/AreaTransitions/Kitchen_To_Basement"]
-visible = false
 position = Vector2( 0.192505, -80.2288 )
 texture = ExtResource( 25 )
 
@@ -245,7 +245,6 @@ position = Vector2( 146.278, 374.874 )
 script = ExtResource( 22 )
 
 [node name="F_Prompt" type="Sprite" parent="LevelBackground/AreaTransitions/Basement_To_Kitchen"]
-visible = false
 position = Vector2( -19.0213, -63.2198 )
 texture = ExtResource( 25 )
 
@@ -333,6 +332,9 @@ position = Vector2( 940.27, 288.057 )
 rotation = -0.81955
 shape = SubResource( 19 )
 
+[node name="TeleportNode2D" parent="LevelBackground" instance=ExtResource( 27 )]
+position = Vector2( 236.478, 236.898 )
+
 [node name="Basement_Teleport" type="Position2D" parent="LevelBackground"]
 position = Vector2( 147.265, 375.217 )
 
@@ -343,9 +345,7 @@ position = Vector2( 1973.24, 190.455 )
 
 [node name="Actors" type="YSort" parent="YSort"]
 
-[node name="LirikYaki" parent="YSort/Actors" groups=[
-"Player",
-] instance=ExtResource( 2 )]
+[node name="LirikYaki" parent="YSort/Actors" groups=["Player"] instance=ExtResource( 2 )]
 position = Vector2( 234.523, 251.754 )
 scale = Vector2( 1, 1 )
 
